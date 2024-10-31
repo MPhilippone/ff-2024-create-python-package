@@ -11,7 +11,7 @@ requires = ["hatchling"]
 ################################################################################
 
 [project]
-name = "mypackage"
+name = "MPTestPackage"
 
 version = "0.1.0"
 
@@ -42,8 +42,8 @@ keywords = []
 dependencies = []
 
 [project.urls]
-Documentation = "https://mypackage.readthedocs.io"
-Download = "https://pypi.org/project/mypackage/#files"
+Documentation = "https://MPTestPackage.readthedocs.io"
+Download = "https://pypi.org/project/MPTestPackage/#files"
 
 [project.optional-dependencies]
 dev = [
@@ -59,4 +59,16 @@ dev = [
 only-packages = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/mypackage"]
+packages = ["src/MPTestPackage"]
+
+# Create Hatch environment
+
+[tool.hatch.envs.test]
+description = """Environment that runs the test suite"""
+extra-dependencies = [
+    "pytest",
+    "pytest-cov"
+]
+
+[tool.hatch.envs.test.script]
+run_test = "pytest --cov=MPTestPackage --cov-report=term-missing"
